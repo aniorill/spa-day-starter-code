@@ -1,24 +1,21 @@
 package org.launchcode.spaday.models;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class User {
 
-    @NotNull
-    @Size(min = 5, max = 15)
+    @NotBlank(message = "Username is required." )
+    @Size(min = 5, max = 15, message = "Username must be between 5-15 characters")
     private String username;
 
-    @Email
+    @Email(message="Must be an actual email.")
     private String email;
 
-    @NotNull
-    @Min(6)
+    @NotBlank(message = "Password is required." )
+    @Size(min=6, message = "Password must be at least 6 characters.")
     private String password;
 
-    @NotNull
+    @NotBlank(message = "Password must be entered to verify." )
     private String verify;
 
     public User() {
